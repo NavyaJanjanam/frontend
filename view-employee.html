@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Employee</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            background-color:blueviolet ;
+            font-family: 'Verdana', sans-serif;
+            padding: 40px;
+        }
+
+        .dashboard {
+            max-width: 1200px;
+            margin: auto;
+            padding: 30px;
+            background: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 50px;
+            font-size: 36px;
+            font-weight: bold;
+        }
+
+        .section {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            background: #ecf0f1;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .section h3 {
+            grid-column: span 2;
+            color: #2980b9;
+            font-size: 28px;
+            margin-bottom: 20px;
+            position: relative;
+            text-align: left;
+        }
+
+        .detail {
+            background: #ffffff;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 1px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .detail label {
+            display: block;
+            font-weight: bold;
+            color: #34495e;
+        }
+
+        .detail span {
+            display: block;
+            color: #2c3e50;
+            margin-top: 5px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: Green;
+            color: #fff;
+            border-radius: 5px;
+            text-decoration: none;
+            text-align: center;
+            margin: 30px auto 0;
+            transition: background-color 0.3s;
+        }
+
+        .btn:hover {
+            background-color: red;
+        }
+
+        @media (max-width: 800px) {
+            .section {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="dashboard">
+    <h2>Employee Details for <span th:text="${employee.fullName}">Employee Name</span></h2>
+
+    <!-- Personal Details Section -->
+    <div class="section">
+        <h3>Personal Details</h3>
+        <div class="detail">
+            <label>Full Name:</label>
+            <span th:text="${employee.fullName}"></span>
+        </div>
+        <div class="detail">
+            <label>Date of Birth:</label>
+            <span th:text="${employee.dob}"></span>
+        </div>
+        <div class="detail">
+            <label>Gender:</label>
+            <span th:text="${employee.gender}"></span>
+        </div>
+        <div class="detail">
+            <label>Personal Email:</label>
+            <span th:text="${employee.personalEmail}"></span>
+        </div>
+        <div class="detail">
+            <label>Mobile:</label>
+            <span th:text="${employee.mobile}"></span>
+        </div>
+        <div class="detail">
+            <label>Emergency Contact:</label>
+            <span th:text="${employee.emergencyContact}"></span>
+        </div>
+        <div class="detail">
+            <label>Current Address:</label>
+            <span th:text="${employee.currentAddressLine1} + ', ' + ${employee.currentAddressLine2} + ', ' + ${employee.currentPincode}"></span>
+        </div>
+        <div class="detail">
+            <label>Permanent Address:</label>
+            <span th:text="${employee.permanentAddressLine1} + ', ' + ${employee.permanentAddressLine2} + ', ' + ${employee.permanentPincode}"></span>
+        </div>
+    </div>
+
+    <!-- Professional Details Section -->
+    <div class="section">
+        <h3>Professional Details</h3>
+        <div class="detail">
+            <label>Employment Code:</label>
+            <span th:text="${employee.employeeCode}"></span>
+        </div>
+        <div class="detail">
+            <label>Company Email:</label>
+            <span th:text="${employee.companyEmail}"></span>
+        </div>
+        <div class="detail">
+            <label>Password:</label>
+            <span th:text="${employee.password}"></span>
+        </div>
+        <div class="detail">
+            <label>Date of Joining:</label>
+            <span th:text="${employee.dateOfJoining}"></span>
+        </div>
+        <div class="detail">
+            <label>Office Phone:</label>
+            <span th:text="${employee.officePhone}"></span>
+        </div>
+        <div class="detail">
+            <label>Reporting Manager:</label>
+            <span th:text="${employee.reportingManager}"></span>
+        </div>
+        <div class="detail">
+            <label>HR Name:</label>
+            <span th:text="${employee.hrName}"></span>
+        </div>
+        <div class="detail">
+            <label>Employment History:</label>
+            <span th:text="${employee.employmentHistory}"></span>
+        </div>
+    </div>
+
+    <!-- Project Details Section -->
+    <div class="section">
+        <h3>Project Details</h3>
+        <div class="detail">
+            <label>Current Project:</label>
+            <span th:text="${employee.currentProject}"></span>
+        </div>
+        <div class="detail">
+            <label>Start Date:</label>
+            <span th:text="${employee.startDate}"></span>
+        </div>
+        <div class="detail">
+            <label>End Date:</label>
+            <span th:text="${employee.endDate}"></span>
+        </div>
+        <div class="detail">
+            <label>Project Reporting Manager:</label>
+            <span th:text="${employee.reportingManagerProject}"></span>
+        </div>
+    </div>
+
+    <!-- Finance Details Section -->
+    <div class="section">
+        <h3>Finance Details</h3>
+        <div class="detail">
+            <label>PAN Card:</label>
+            <span th:text="${employee.panCard}"></span>
+        </div>
+        <div class="detail">
+            <label>Aadhar Card:</label>
+            <span th:text="${employee.aadharCard}"></span>
+        </div>
+        <div class="detail">
+            <label>Bank Name:</label>
+            <span th:text="${employee.bankName}"></span>
+        </div>
+        <div class="detail">
+            <label>Branch:</label>
+            <span th:text="${employee.branch}"></span>
+        </div>
+        <div class="detail">
+            <label>IFSC Code:</label>
+            <span th:text="${employee.ifscCode}"></span>
+        </div>
+        <div class="detail">
+            <label>CTC Breakup:</label>
+            <span th:text="${employee.ctcBreakup}"></span>
+        </div>
+    </div>
+
+    <div style="text-align: center;">
+        <a class="btn" th:href="@{/admin-dashboard}">Back to Admin Dashboard</a>
+    </div>
+</div>
+
+</body>
+</html>
+
